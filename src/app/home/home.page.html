@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" color="pink">
+  <ion-toolbar color="pink">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="pink">Data Mahasiswa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="pink">
+  <ion-header collapse="condense">
+    <ion-toolbar color="pink">
+      <ion-title size="large">
+        Data Mahasiswa
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="full" color="pink">
+    <ion-button type="button" [routerLink]="['/mahasiswa-tambah']" routerLinkActive="router-link-active" color="danger"
+      expand="block"> Tambah Mahasiswa</ion-button>
+  </ion-list>
+  <ion-list color="pink">
+    <ion-list-header color="pink">Data Mahaiswa</ion-list-header>
+  </ion-list>
+  <ion-card lines="inset" *ngFor="let mahasiswa_value of mahasiswa" color="dark">
+    <ion-item color="pink">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>{{ mahasiswa_value.nama }}</ion-label>
+      <ion-button color="primary" slot="end" [routerLink]="['/mahasiswa-edit/',mahasiswa_value.nim]"
+        routerLinkActive="router-link-active">Edit</ion-button>
+      <ion-button color="danger" slot="end" (click)="deleteMahasiswa(mahasiswa_value.nim)">Hapus</ion-button>
+    </ion-item>
+
+  </ion-card>
+  <ion-item (click)="logout()" color="pink">
+    <ion-icon slot="start" ios="exit-outline" md="exit-sharp"></ion-icon>
+    <ion-label>Logout</ion-label>
+    </ion-item>
+</ion-content>
+
+ 
